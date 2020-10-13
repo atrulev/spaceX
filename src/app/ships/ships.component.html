@@ -1,0 +1,26 @@
+
+
+<h2>Ship component</h2>
+<div class="container">
+
+<div class="ships-data-grid">
+<div class="ships-container" *ngFor="let item of this.ships$">
+  <a [title]=[item.name] [routerLink]=[item.name] [href]=[item.name]>{{item.name}}</a>
+<div class="ship-data">
+  <div class="ship">
+  <div class="ship-detail-title">Тип</div>
+  <div class="ship-detail-value">{{item.type}}</div>
+</div>
+<div class="ship">
+  <div class="ship-detail-title">Порт</div>
+  <div class="ship-detail-value">{{item.home_port}}</div>
+</div>
+</div>
+</div>
+</div>
+<div class= "filter-container">
+  <h2>Inputs</h2>
+  <input title="Input">
+</div>
+  
+</div>

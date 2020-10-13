@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.ships-data-grid {
+    width: 70%;
+}
+.filter-container {
+    width: 30%;
+}
+.ships-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    max-width: 1399px;
+    border: 1px solid black ;
+    justify-content: space-between;
+    margin: 3px 10px;
+}
+.ships-container a {
+    font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 23px;
+text-decoration: none;
+color: black;
+}
+.ship-data{
+    display: flex;
+    flex-direction: row;
+}
+.ship{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.ship-detail-title{
+    width: 150px;
+}
+.ship-detail-value {
+    color: blue;
+}
