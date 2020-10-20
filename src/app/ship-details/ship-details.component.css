@@ -1,0 +1,46 @@
+
+body{
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+}
+.back-title{
+margin-top: 3px;
+float: right;
+}
+.ship-detail-container {
+    display: flex;
+    flex-direction: column;
+    width: 698px;
+    margin: 48px 83px
+}
+.display-flex-row {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+.datail-container div {
+    height: 64px;
+}
+
+.ship-detail-container h2{
+margin-bottom: 53px;
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 28px;
+line-height: 33px;
+}
+.blue {
+    color: #2962FF;
+}
+.detail-title-left {
+    width: 453px;
+}
+.detail-title-right {
+    width: 245px;
+}
+.detail-title span {
+    width: 284px;
+}

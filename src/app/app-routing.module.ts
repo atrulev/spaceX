@@ -5,7 +5,7 @@ import { ShipsComponent } from './ships/ships.component';
 
 const routes: Routes = [
   {path: '', component: ShipsComponent},
-  {path: ':name', component: ShipDetailsComponent}
+  {path: ':id', component: ShipDetailsComponent}
 ];
 
 @NgModule({

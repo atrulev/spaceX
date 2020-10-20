@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { ApolloQueryResult } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Subscription } from 'rxjs';
-import {map, switchMap} from 'rxjs/operators';
+import { Subject, Subscription, Observable } from 'rxjs';
+import {filter, map, switchMap} from 'rxjs/operators';
+
 
 export interface Ships{
   name: string;
@@ -20,17 +21,30 @@ export interface Query {
   ships: Ships[];
 }
 
-const SHIPS_DATA_QUERY = gql `
-{
-  ships(limit: 8) {
-    name
-    type
-    home_port
-    weight_kg
+const SHIPS_LIST_QUERY = gql `
+query NewQ($id: ID, $type: String, $port: String) {
+  ships(find: {id: $id, type: $type home_port: $port}) {
     year_built
+    weight_kg
+    type
+    name
+    home_port
     missions {
       name
-      flight
+    }
+  }
+}
+`;
+const SHIP_DETAIL_QUERY = gql `
+query NewQ($id: ID, $type: String, $port: String, $name: String) {
+  ships(find: {type: $type, home_port: $port, id: $id, name: $name}) {
+    year_built
+    weight_kg
+    type
+    name
+    home_port
+    missions {
+      name
     }
     id
   }
@@ -41,13 +55,26 @@ const SHIPS_DATA_QUERY = gql `
   providedIn: 'root'
 })
 export class SpacexDataServiceService {
-  data$: any;
+  // id = '';
+  // port = '';
+  // type = '';
+  // name = '';
+  portFilter: string[] = ['Port of Los Angeles', 'Fort Lauderdale'];
+  getShipsList(id?: string, ports?: string[], type?: string, name?: string): Observable<Ships[]> {
+ return this.apollo.watchQuery<Query>({
+  query: SHIP_DETAIL_QUERY,
+  variables: {
+    id: id,
+    type: type,
+    //port: port,
+    name: name
+  }
+ })
+  .valueChanges.pipe(
+    map(result => result.data.ships),
+   );
+  }
   constructor( private apollo: Apollo) {
-  this.data$ = this.apollo.watchQuery<Query>({
-      query: SHIPS_DATA_QUERY,
-    })
-    .valueChanges.pipe(
-      map(result => result.data.ships)
-     );
+
    }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { SpacexDataServiceService, Ships } from '../spacex-data-service.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-ship-details',
@@ -9,19 +10,27 @@ import { SpacexDataServiceService, Ships } from '../spacex-data-service.service'
   styleUrls: ['./ship-details.component.css']
 })
 export class ShipDetailsComponent implements OnInit {
- shipDetail: Ships;
-
+  ship$: Observable<Ships[]>;
+  ship: Ships;
+  id = '';
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    shipService: SpacexDataServiceService
+    private spacexService: SpacexDataServiceService
   ) {
-    console.log(route.params._value);
-    this.shipDetail = shipService.data$;
-    this.shipDetail.name = route.params._value.name;
+    this.id = route.snapshot.data.id;
+    console.log('router id = ', this.id);
+    this.ship$ = spacexService.getShipsList(this.id);
    }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ship$.subscribe(val => {
+      if (val[0].name !== '') {
+        this.ship = val[0];
+        console.log('Ship detail work');
+      }
+    });
+  }
 
 
 }

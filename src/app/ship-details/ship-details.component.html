@@ -1,6 +1,17 @@
-<p>ship-details works!</p>
-<p>Имя: {{shipDetail.name}}</p>
-<p>Тип: {{shipDetail.type}}</p>
-<p>Миссия:{{shipDetail.missions}}</p>
-<p>Вес, кг: {{shipDetail.weight_kg}}</p>
-<p>Год: {{shipDetail.year_built}}</p>
+<div class="ship-detail-container">
+    <div class="blue display-flex-row">
+        <a [routerLink]="''" href="">
+            <mat-icon>navigate_before</mat-icon><p class="back-title">Вернуться</p>
+        </a>
+    </div>
+    <h2>{{ship.name}}</h2>
+    <div class="display-flex-row datail-container">
+        <div class="detail-title-left">Тип  <span class="blue">{{ship.type}}</span></div>
+        <div class="detail-title-right">Порт  <span class="blue">{{ship.type}}</span></div>
+        <div class="detail-title-left">Вес  <span class="blue">{{ship.weight_kg}}</span></div>
+        <div class="detail-title-right">Год  <span class="blue">{{ship.type}}</span></div>
+    </div>
+        <div>Миссии<span class="blue" *ngFor="let item of ship.missions"> {{item.name}},  </span> </div> 
+   
+    
+</div>

@@ -1,43 +1,97 @@
+.ships-page-title {
+    margin: 52px 0px 24px 63px;
+    font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 28px;
+line-height: 32px;
+}
 .container{
     display: flex;
     flex-direction: row;
+    margin-left: 63px;
+    min-width: 900px;
 }
 .ships-data-grid {
     width: 70%;
 }
-.filter-container {
-    width: 30%;
-}
 .ships-container {
     display: flex;
     flex-direction: column;
-    padding: 10px;
     max-width: 1399px;
-    border: 1px solid black ;
+    border-bottom: 1px solid #A5A5A5;
     justify-content: space-between;
-    margin: 3px 10px;
+    
 }
 .ships-container a {
     font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
 line-height: 23px;
 text-decoration: none;
-color: black;
+color: rgba(0, 0, 0, 0.87);
+padding-top: 40px;
+margin-right: auto;
+}
+.ships-container mat-icon {
+    float: right;
+    color: #2962FF;
+    margin-left: 23px;
 }
 .ship-data{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
 }
-.ship{
+.ship-detail-container{
     display: flex;
     flex-direction: row;
     width: 100%;
+    padding: 20px 0px;
+    
 }
 .ship-detail-title{
-    width: 150px;
+    width: 132px;
 }
 .ship-detail-value {
-    color: blue;
+    color: #2962FF;
+    min-width: 200px;
+}
+.filter-container {
+    width: 393px;
+    margin-left: 64px;
+    margin-right: 10px;
+   
+}
+.example-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+}
+.ports-section {
+    display: flex;
+    flex-direction: column;
+}
+.types-section{
+    display: flex;
+    flex-direction: column;
+    padding-top: px;
+}
+.type-radio {
+    padding-top: 10px;
+}
+.radio-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 24px;
 }
