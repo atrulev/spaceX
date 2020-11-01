@@ -1,0 +1,54 @@
+
+.ships-data-grid {
+    /* width: 70%; */
+    border-bottom: 1px solid #A5A5A5;
+}
+.ships-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1399px;
+    
+    justify-content: space-between;
+    
+}
+.ships-container a {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+line-height: 23px;
+text-decoration: none;
+color: rgba(0, 0, 0, 0.87);
+padding-top: 40px;
+margin-right: auto;
+}
+.ships-container mat-icon {
+    float: right;
+    color: #2962FF;
+    margin-left: 23px;
+}
+.ship-data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
+}
+.ship-detail-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px 0px;
+    
+}
+.ship-detail-title{
+    width: 132px;
+}
+.ship-detail-value {
+    color: #2962FF;
+    min-width: 200px;
+}

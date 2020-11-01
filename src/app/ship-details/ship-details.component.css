@@ -9,21 +9,28 @@ font-size: 16px;
 margin-top: 3px;
 float: right;
 }
+
+.ship-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
+flex-wrap: wrap;
+}
 .ship-detail-container {
     display: flex;
     flex-direction: column;
     width: 698px;
-    margin: 48px 83px
+    margin: 48px 83px;
+    flex-wrap: wrap;
 }
-.display-flex-row {
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
+.back-button {
+    margin-right: auto;
 }
-.datail-container div {
-    height: 64px;
-}
-
 .ship-detail-container h2{
 margin-bottom: 53px;
 font-family: Roboto;
@@ -35,12 +42,28 @@ line-height: 33px;
 .blue {
     color: #2962FF;
 }
+.datail-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 128px;
+}
 .detail-title-left {
     width: 453px;
+    display: flex;
+    flex-direction: row;
+}
+.detail-title-right :first-child, .detail-title-left :first-child{
+width: 132px;
 }
 .detail-title-right {
     width: 245px;
+    display: flex;
+    flex-direction: row;
 }
-.detail-title span {
-    width: 284px;
+.missions-title {
+    padding-bottom: 22px;
+}
+.loader {
+    margin: 200px auto;
 }

@@ -5,6 +5,8 @@ font-style: normal;
 font-weight: 500;
 font-size: 28px;
 line-height: 32px;
+display: flex;
+flex-direction: row;
 }
 .container{
     display: flex;
@@ -14,6 +16,14 @@ line-height: 32px;
 }
 .ships-data-grid {
     width: 70%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+
+}
+mat-card-content {
+    display: flex;
+    flex-direction: column;
 }
 .ships-container {
     display: flex;
@@ -36,7 +46,7 @@ padding-top: 40px;
 margin-right: auto;
 }
 .ships-container mat-icon {
-    float: right;
+   /* float: right; */
     color: #2962FF;
     margin-left: 23px;
 }
@@ -68,7 +78,7 @@ line-height: 24px;
     width: 393px;
     margin-left: 64px;
     margin-right: 10px;
-   
+   float: right;
 }
 .example-form {
     display: flex;
@@ -94,4 +104,7 @@ line-height: 24px;
     font-size: 16px;
     line-height: 19px;
     margin-top: 24px;
+}
+.loader {
+    margin: auto;
 }
