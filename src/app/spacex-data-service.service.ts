@@ -3,7 +3,7 @@ import { ApolloQueryResult } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Subject, Subscription, Observable } from 'rxjs';
-import {filter, map, switchMap} from 'rxjs/operators';
+import {filter, map, switchMap, debounceTime} from 'rxjs/operators';
 
 
 export interface Ships{
@@ -67,6 +67,7 @@ export class SpacexDataServiceService {
   }
  })
   .valueChanges.pipe(
+    debounceTime(500),
     map(result => result.data.ships.filter(ship => ports.includes(ship.home_port))
    ));
   }

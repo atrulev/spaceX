@@ -5,13 +5,15 @@
 }
 .ships-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     max-width: 1399px;
     
     justify-content: space-between;
     
 }
 .ships-container a {
+
+    
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
@@ -24,9 +26,9 @@ padding-top: 40px;
 margin-right: auto;
 }
 .ships-container mat-icon {
-    float: right;
     color: #2962FF;
     margin-left: 23px;
+
 }
 .ship-data{
     display: flex;

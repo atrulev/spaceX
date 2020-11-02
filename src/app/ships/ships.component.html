@@ -31,7 +31,8 @@
   </div>
 </div>
 
-<mat-paginator [length]="lengthPaginator"
+<mat-paginator class="paginator" [length]="lengthPaginator"
               [pageSize]="size"
+              hidePageSize = "true"
               (page)="pageChange($event)">
 </mat-paginator>

@@ -13,6 +13,8 @@ flex-direction: row;
     flex-direction: row;
     margin-left: 63px;
     min-width: 900px;
+    min-height: 670px;
+
 }
 .ships-data-grid {
     width: 70%;
@@ -107,4 +109,9 @@ line-height: 24px;
 }
 .loader {
     margin: auto;
+}
+.paginator {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 64px;
 }

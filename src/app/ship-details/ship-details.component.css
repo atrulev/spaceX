@@ -30,6 +30,7 @@ flex-wrap: wrap;
 }
 .back-button {
     margin-right: auto;
+    display: flex;
 }
 .ship-detail-container h2{
 margin-bottom: 53px;
