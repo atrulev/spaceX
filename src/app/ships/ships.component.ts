@@ -38,12 +38,10 @@ export class ShipsComponent implements OnInit, OnDestroy {
   port = '';
   type = '';
   name = '';
-  //Paginator properties
   lengthPaginator = 0;
   size = 5;
   startIndex = 0;
   endIndex = 5;
-  // end Paginator properties
   favoriteType = '';
   ships$: Observable<Ships[]>;
   pagLength: Observable<number>;
@@ -53,13 +51,13 @@ export class ShipsComponent implements OnInit, OnDestroy {
   nameChange(name): void {
   this.getLoader();
   this.name = name;
-  this.ships$ = this.spacexService.getShipsList(this.portsFilter, this.id, this.type, this.name)
+  this.ships$ = this.spacexService.getShipsList(this.portsFilter, this.id, this.type, this.name);
   // this.ships$.subscribe(val => {
   // this.loaded = true;
   // });
   this.completeLoading();
   }
-  portChange() {
+  portChange(): void{
   this.getLoader();
   this.portsFilter = [];
   if (this.form.get('portGroup.canaveral').value) {this.portsFilter.push('Port Canaveral'); }
@@ -130,6 +128,5 @@ this.loaded = true;
 ngOnDestroy(): void{
   this.destroy$.complete();
   this.destroy$.unsubscribe();
-  
 }
 }
