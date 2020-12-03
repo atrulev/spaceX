@@ -8,8 +8,6 @@ import { Ships } from 'src/app/spacex-data-service.service';
 })
 export class ShipComponent implements OnInit {
  @Input() item: Ships;
- 
- //@Input() loaded: false;
   constructor() { }
   ngOnInit(): void {
 

@@ -23,20 +23,17 @@ export class ShipDetailsComponent implements OnInit {
     this.ship$ = spacexService.getShipsList(this.ports, this.id);
    }
 
-  ngOnInit() {
+  ngOnInit(): void{
     this.loaded = false;
     this.route.paramMap
     .pipe(
       map((params: ParamMap) => {
-        console.log('ID: ', params.get('id'));
         return params.get('id'); }
       )
     )
     .subscribe(elem => {
-      console.log('elem = ', elem);
       this.ship$ = this.spacexService.getShipsList(this.ports, elem);
       this.ship$.subscribe(val => {
-        console.log('val = ', val);
         this.ship = val[0];
         this.loaded = true;
     });

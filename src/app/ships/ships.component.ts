@@ -91,24 +91,20 @@ export class ShipsComponent implements OnInit, OnDestroy {
     setPagSize = () => {
       return this.ships$.subscribe(value => {
         this.lengthPaginator = value.length;
-        console.log('lengthPaginator =', this.lengthPaginator);
       });
     }
     getLoader = () => {
       this.loaded = false;
       this.checkResult = true;
-      console.log('loader change = ', this.loaded);
       return this.loaded;
     }
     completeLoading = () => {
       this.ships$.subscribe(val => {
         if (val.length === 0) {
-          console.log('val = ', val);
           this.checkResult = false;
         }
         this.loaded = true;
       });
-      console.log('this.checkResult = ', this.checkResult);
       return this.checkResult;
     }
   constructor(private spacexService: SpacexDataServiceService) {
