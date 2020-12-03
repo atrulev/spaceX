@@ -1,13 +1,13 @@
 import { DataSource } from '@angular/cdk/table';
-import { Component, OnDestroy, OnInit, ViewChild, Input} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ApolloQueryResult } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Observable, of, pipe, Subject } from 'rxjs';
 import { SpacexDataServiceService, Ships } from '../spacex-data-service.service';
-import {ShipComponent} from '../ships/ship/ship.component';
+import { ShipComponent } from '../ships/ship/ship.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { filter, map, takeUntil } from 'rxjs/operators';
 
@@ -20,7 +20,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 export class ShipsComponent implements OnInit, OnDestroy {
   form = new FormGroup({
     typeShip: new FormControl(),
-    portGroup : new FormGroup({
+    portGroup: new FormGroup({
       canaveral: new FormControl(),
       ofLosAngeles: new FormControl(),
       fortLauderdale: new FormControl(),
@@ -31,7 +31,7 @@ export class ShipsComponent implements OnInit, OnDestroy {
   @ViewChild('paginator') paginator: MatPaginator;
   loaded = false;
   checkResult = true;
- // indeterminate = false;
+  // indeterminate = false;
   portsFilter = ['Port Canaveral', 'Port of Los Angeles', 'Fort Lauderdale'];
   types = ['Barge', 'Cargo', 'High Speed Craft', 'Tug'];
   id = '';
@@ -49,84 +49,81 @@ export class ShipsComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['name', 'type', 'home_port'];
   dataSource: MatTableDataSource<Ships>;
   nameChange(name): void {
-  this.getLoader();
-  this.name = name;
-  this.ships$ = this.spacexService.getShipsList(this.portsFilter, this.id, this.type, this.name);
-  // this.ships$.subscribe(val => {
-  // this.loaded = true;
-  // });
-  this.completeLoading();
+    this.getLoader();
+    this.name = name;
+    this.ships$ = this.spacexService.getShipsList(this.portsFilter, this.id, this.type, this.name);
+    // this.ships$.subscribe(val => {
+    // this.loaded = true;
+    // });
+    this.completeLoading();
   }
-  portChange(): void{
-  this.getLoader();
-  this.portsFilter = [];
-  if (this.form.get('portGroup.canaveral').value) {this.portsFilter.push('Port Canaveral'); }
-  if (this.form.get('portGroup.ofLosAngeles').value) {this.portsFilter.push('Port of Los Angeles'); }
-  if (this.form.get('portGroup.fortLauderdale').value) {this.portsFilter.push('Fort Lauderdale'); }
-  this.ships$ = this.spacexService.getShipsList(this.portsFilter, this.id, this.type, this.name);
-  this.ships$.subscribe(val => {
-    this.loaded = true;
-  });
-  this.setPagSize();
-  this.completeLoading();
-  // this.ships$.subscribe();
-
-  }
-  typeChange(): void{
-    this.form.get('typeShip').valueChanges.pipe(takeUntil(this.destroy$)).subscribe(type => {
-    this.ships$ = this.spacexService.getShipsList(this.portsFilter, this.id, type, this.name);
+  portChange(): void {
+    this.getLoader();
+    this.portsFilter = [];
+    if (this.form.get('portGroup.canaveral').value) { this.portsFilter.push('Port Canaveral'); }
+    if (this.form.get('portGroup.ofLosAngeles').value) { this.portsFilter.push('Port of Los Angeles'); }
+    if (this.form.get('portGroup.fortLauderdale').value) { this.portsFilter.push('Fort Lauderdale'); }
+    if (this.portsFilter.length === 0) { this.portsFilter = ['Port Canaveral', 'Port of Los Angeles', 'Fort Lauderdale']; }
+    this.ships$ = this.spacexService.getShipsList(this.portsFilter, this.id, this.type, this.name);
+    this.ships$.subscribe(val => {
+      this.loaded = true;
+    });
     this.setPagSize();
     this.completeLoading();
+    // this.ships$.subscribe();
+
+  }
+  typeChange(): void {
+    this.form.get('typeShip').valueChanges.pipe(takeUntil(this.destroy$)).subscribe(type => {
+      this.ships$ = this.spacexService.getShipsList(this.portsFilter, this.id, type, this.name);
+      this.setPagSize();
+      this.completeLoading();
     });
-    }
-  pageChange(event: PageEvent): void{
+  }
+  pageChange(event: PageEvent): void {
     this.setPagSize();
     this.startIndex = event.pageIndex * event.pageSize;
     if ((this.startIndex + event.pageSize) > this.lengthPaginator) {
       this.endIndex = this.lengthPaginator;
     }
-    else
-    {this.endIndex = this.startIndex + event.pageSize; }
-    }
-    setPagSize = () => {
-      return this.ships$.subscribe(value => {
-        this.lengthPaginator = value.length;
-        console.log('lengthPaginator =', this.lengthPaginator);
-      });
-    }
-    getLoader = () => {
-      this.loaded = false;
-      this.checkResult = true;
-      console.log('loader change = ', this.loaded);
-      return this.loaded;
-    }
-    completeLoading = () => {
-      this.ships$.subscribe(val => {
-        if (val.length === 0) {
-          console.log('val = ', val);
-          this.checkResult = false;
-        }
-        this.loaded = true;
-      });
-      console.log('this.checkResult = ', this.checkResult);
-      return this.checkResult;
-    }
+    else { this.endIndex = this.startIndex + event.pageSize; }
+  }
+  setPagSize = () => {
+    return this.ships$.subscribe(value => {
+      this.lengthPaginator = value.length;
+    });
+  }
+  getLoader = () => {
+    this.loaded = false;
+    this.checkResult = true;
+    return this.loaded;
+  }
+  completeLoading = () => {
+    this.ships$.subscribe(val => {
+      if (val.length === 0) {
+        console.log('val = ', val);
+        this.checkResult = false;
+      }
+      this.loaded = true;
+    });
+    return this.checkResult;
+  }
   constructor(private spacexService: SpacexDataServiceService) {
-this.ships$ = spacexService.getShipsList(this.portsFilter);
+    this.ships$ = spacexService.getShipsList(this.portsFilter);
   }
 
- ngOnInit(): void {
-this.spacexService.getShipsList(this.portsFilter).subscribe(data => {
-this.dataSource = new MatTableDataSource<Ships>(data);
-this.setPagSize();
-this.dataSource.paginator = this.paginator;
-this.typeChange();
-this.loaded = true;
-  });
+  ngOnInit(): void {
+    this.spacexService.getShipsList(this.portsFilter).subscribe(data => {
+      this.dataSource = new MatTableDataSource<Ships>(data);
+      this.setPagSize();
+      this.dataSource.paginator = this.paginator;
+      this.typeChange();
+      this.loaded = true;
+    });
 
-}
-ngOnDestroy(): void{
-  this.destroy$.complete();
-  this.destroy$.unsubscribe();
-}
+  }
+  ngOnDestroy(): void {
+    this.destroy$.complete();
+    this.destroy$.unsubscribe();
+  }
 }
