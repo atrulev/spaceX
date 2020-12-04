@@ -1,4 +1,6 @@
-<mat-spinner *ngIf="!loaded" class="loader"></mat-spinner>
+<div class="spiner_container"> 
+    <mat-spinner *ngIf="!loaded" class="loader"></mat-spinner>
+</div> 
 <div class="ship-detail-container" *ngIf ="ship">
     <div class="blue back-button">
         <a [routerLink]="''" href="">

@@ -1,70 +1,75 @@
-
-body{
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 16px;
+body {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
 }
-.back-title{
-margin-top: 3px;
-float: right;
+.back-title {
+  margin-top: 3px;
+  float: right;
 }
 
-.ship-data{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 16px;
-line-height: 24px;
-flex-wrap: wrap;
+.ship-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  flex-wrap: wrap;
 }
 .ship-detail-container {
-    display: flex;
-    flex-direction: column;
-    width: 698px;
-    margin: 48px 83px;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  width: 698px;
+  margin: 48px 83px;
+  flex-wrap: wrap;
 }
 .back-button {
-    margin-right: auto;
-    display: flex;
+  margin-right: auto;
+  display: flex;
 }
-.ship-detail-container h2{
-margin-bottom: 53px;
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 28px;
-line-height: 33px;
+.ship-detail-container h2 {
+  margin-bottom: 53px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 33px;
 }
 .blue {
-    color: #2962FF;
+  color: #2962ff;
 }
 .datail-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    height: 128px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 128px;
 }
 .detail-title-left {
-    width: 453px;
-    display: flex;
-    flex-direction: row;
+  width: 453px;
+  display: flex;
+  flex-direction: row;
 }
-.detail-title-right :first-child, .detail-title-left :first-child{
-width: 132px;
+.detail-title-right :first-child,
+.detail-title-left :first-child {
+  width: 132px;
 }
 .detail-title-right {
-    width: 245px;
-    display: flex;
-    flex-direction: row;
+  width: 245px;
+  display: flex;
+  flex-direction: row;
 }
 .missions-title {
-    padding-bottom: 22px;
+  padding-bottom: 22px;
 }
 .loader {
-    margin: 200px auto;
+  margin: 200px auto;
+}
+
+.spiner_container {
+   display: flex;
+   justify-content: space-around;
 }
