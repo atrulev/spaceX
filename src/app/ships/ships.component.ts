@@ -70,8 +70,6 @@ export class ShipsComponent implements OnInit, OnDestroy {
     });
     this.setPagSize();
     this.completeLoading();
-    // this.ships$.subscribe();
-
   }
   typeChange(): void {
     this.form.get('typeShip').valueChanges.pipe(takeUntil(this.destroy$)).subscribe(type => {
